@@ -1,0 +1,562 @@
+@keyframes gamesymbol {
+    from {
+        transform: scale(0.001) matrix(0.001, 0, 0, 0.001, -1000, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) matrix(1, 0, 0, 1, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes gametext {
+    from {
+        transform: matrix(0.2, 0, 0, 0.2, 0, -500);
+    }
+
+    to {
+        transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+}
+
+@keyframes gamemiddle {
+    from {
+        transform: matrix(1, 0, 0, 0.1, 0, 0);
+    }
+
+    to {
+        transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+}
+
+@keyframes dgamesymbol {
+    to {
+        transform: scale(0.001) matrix(0.001, 0, 0, 0.001, -1000, 0);
+        opacity: 0;
+    }
+
+    from {
+        transform: scale(1) matrix(1, 0, 0, 1, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes dgametext {
+    to {
+        transform: matrix(0.2, 0, 0, 0.2, 0, -500);
+    }
+
+    from {
+        transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+}
+
+@keyframes dgamemiddle {
+    to {
+        transform: matrix(1, 0, 0, 0.001, 0, 0);
+    }
+
+    from {
+        transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+}
+
+@keyframes inputfail {
+    from {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    to {
+        background: rgba(255, 0, 0, 0.8);
+    }
+}
+
+@keyframes inputsuccess {
+    from {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    to {
+        background: rgba(0, 255, 0, 0.8);
+    }
+}
+
+html, body, .main, .game-view {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+body {
+    background-color: #220022;
+
+    .game-view {
+        display: table;
+
+        .game-text {
+            animation: gametext 0.4s both;
+        }
+
+        .game-input {
+            animation: gamemiddle 0.2s both;
+        }
+
+        .game-symbol {
+            animation: gamesymbol 0.3s both;
+        }
+
+        &.drop {
+            .game-text {
+                animation: dgametext 0.2s both;
+            }
+
+            .game-input {
+                animation: dgamemiddle 0.1s both;
+                animation-delay: 0.4s;
+            }
+
+            .game-symbol {
+                animation: dgamesymbol 0.2s both;
+            }
+        }
+
+        &.fail {
+            .game-input {
+                animation: inputfail 0.4s both;
+            }
+        }
+
+        &.success {
+            .game-input {
+                animation: inputsuccess 0.4s both;
+            }
+        }
+
+        .game-header {
+            display: inline-block;
+            position: fixed;
+            text-align: center;
+            margin: auto;
+            padding: 20px;
+            top: 0;
+            left: 0;
+            right: 0;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+
+            p {
+                display: inline-block;
+                padding: 15px;
+            }
+        }
+
+        .game-middle {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 30px;
+            font-weight: 600;
+
+            .game-text {
+                color: #fff;
+                margin-bottom: 30px;
+            }
+
+            .select {
+                .game-symbol {
+                    @for $i from 1 through 50 {
+                        &:nth-child(#{$i}) {
+                            animation-delay: #{($i - 1) * 0.2}s;
+                        }
+                    }
+                }
+            }
+
+            .game-input {
+                width: 100%;
+                background: rgba(0, 0, 0, 0.8);
+
+                &.select {
+                    text-transform: uppercase;
+                }
+
+                color: #fff;
+
+                .game-symbol {
+                    width: 80px;
+                    height: 80px;
+                    line-height: 80px;
+                    transition-duration: 0.3;
+
+                    &.this {
+                        background-color: #999;
+                    }
+
+                    display: inline-block;
+                    border: 2px solid;
+                    margin: 5px;
+
+                    &::before {
+                        content: "~";
+                        display: inline-block;
+                        width: 80px;
+                        height: 80px;
+                        line-height: 80px;
+                    }
+
+                    &.sym97::before {
+                        content: "a";
+                    }
+
+                    &.sym98::before {
+                        content: "b";
+                    }
+
+                    &.sym99::before {
+                        content: "c";
+                    }
+
+                    &.sym100::before {
+                        content: "d";
+                    }
+
+                    &.sym101::before {
+                        content: "e";
+                    }
+
+                    &.sym102::before {
+                        content: "f";
+                    }
+
+                    &.sym103::before {
+                        content: "g";
+                    }
+
+                    &.sym104::before {
+                        content: "h";
+                    }
+
+                    &.sym105::before {
+                        content: "i";
+                    }
+
+                    &.sym106::before {
+                        content: "j";
+                    }
+
+                    &.sym107::before {
+                        content: "k";
+                    }
+
+                    &.sym108::before {
+                        content: "l";
+                    }
+
+                    &.sym109::before {
+                        content: "m";
+                    }
+
+                    &.sym110::before {
+                        content: "n";
+                    }
+
+                    &.sym111::before {
+                        content: "o";
+                    }
+
+                    &.sym112::before {
+                        content: "p";
+                    }
+
+                    &.sym113::before {
+                        content: "q";
+                    }
+
+                    &.sym114::before {
+                        content: "r";
+                    }
+
+                    &.sym115::before {
+                        content: "s";
+                    }
+
+                    &.sym116::before {
+                        content: "t";
+                    }
+
+                    &.sym117::before {
+                        content: "u";
+                    }
+
+                    &.sym118::before {
+                        content: "v";
+                    }
+
+                    &.sym119::before {
+                        content: "w";
+                    }
+
+                    &.sym120::before {
+                        content: "x";
+                    }
+
+                    &.sym121::before {
+                        content: "y";
+                    }
+
+                    &.sym122::before {
+                        content: "z";
+                    }
+
+                    &.sym49::before {
+                        content: "1";
+                    }
+
+                    &.sym50::before {
+                        content: "2";
+                    }
+
+                    &.sym51::before {
+                        content: "3";
+                    }
+
+                    &.sym52::before {
+                        content: "4";
+                    }
+
+                    &.sym53::before {
+                        content: "5";
+                    }
+
+                    &.sym54::before {
+                        content: "6";
+                    }
+
+                    &.sym55::before {
+                        content: "7";
+                    }
+
+                    &.sym56::before {
+                        content: "8";
+                    }
+
+                    &.sym57::before {
+                        content: "9";
+                    }
+
+                    &.sym48::before {
+                        content: "0";
+                    }
+
+                    &.sym45::before {
+                        content: "-";
+                    }
+
+                    &.sym61::before {
+                        content: "=";
+                    }
+
+                    &.sym43::before {
+                        content: "+";
+                    }
+
+                    &.sym95::before {
+                        content: "_";
+                    }
+
+                    &.sym41::before {
+                        content: ")";
+                    }
+
+                    &.sym40::before {
+                        content: "(";
+                    }
+
+                    &.sym42::before {
+                        content: "*";
+                    }
+
+                    &.sym38::before {
+                        content: "&";
+                    }
+
+                    &.sym94::before {
+                        content: "^";
+                    }
+
+                    &.sym37::before {
+                        content: "%";
+                    }
+
+                    &.sym36::before {
+                        content: "$";
+                    }
+
+                    &.sym35::before {
+                        content: "#";
+                    }
+
+                    &.sym64::before {
+                        content: "@";
+                    }
+
+                    &.sym33::before {
+                        content: "!";
+                    }
+
+                    &.sym47::before {
+                        content: "/";
+                    }
+
+                    &.sym63::before {
+                        content: "?";
+                    }
+
+                    &.sym96::before {
+                        content: "`";
+                    }
+
+                    &.sym39::before {
+                        content: "'";
+                    }
+
+                    &.sym34::before {
+                        content: '"';
+                    }
+
+                    &.sym92::before {
+                        content: "\\";
+                    }
+
+                    &.sym124::before {
+                        content: "|";
+                    }
+
+                    &.sym46::before {
+                        content: ".";
+                    }
+
+                    &.sym44::before {
+                        content: ",";
+                    }
+
+                    &.sym65::before {
+                        content: "A";
+                    }
+
+                    &.sym66::before {
+                        content: "B";
+                    }
+
+                    &.sym67::before {
+                        content: "C";
+                    }
+
+                    &.sym68::before {
+                        content: "D";
+                    }
+
+                    &.sym69::before {
+                        content: "E";
+                    }
+
+                    &.sym70::before {
+                        content: "F";
+                    }
+
+                    &.sym71::before {
+                        content: "G";
+                    }
+
+                    &.sym72::before {
+                        content: "H";
+                    }
+
+                    &.sym73::before {
+                        content: "I";
+                    }
+
+                    &.sym74::before {
+                        content: "J";
+                    }
+
+                    &.sym75::before {
+                        content: "K";
+                    }
+
+                    &.sym76::before {
+                        content: "L";
+                    }
+
+                    &.sym77::before {
+                        content: "M";
+                    }
+
+                    &.sym78::before {
+                        content: "N";
+                    }
+
+                    &.sym79::before {
+                        content: "O";
+                    }
+
+                    &.sym80::before {
+                        content: "P";
+                    }
+
+                    &.sym81::before {
+                        content: "Q";
+                    }
+
+                    &.sym82::before {
+                        content: "R";
+                    }
+
+                    &.sym83::before {
+                        content: "S";
+                    }
+
+                    &.sym84::before {
+                        content: "T";
+                    }
+
+                    &.sym85::before {
+                        content: "U";
+                    }
+
+                    &.sym86::before {
+                        content: "V";
+                    }
+
+                    &.sym87::before {
+                        content: "W";
+                    }
+
+                    &.sym88::before {
+                        content: "X";
+                    }
+
+                    &.sym89::before {
+                        content: "Y";
+                    }
+
+                    &.sym90::before {
+                        content: "Z";
+                    }
+
+                    &.sym32 {
+                        color: transparent;
+                    }
+
+                    &.sym32::before {
+                        content: "~";
+                    }
+                }
+            }
+        }
+    }
+}
