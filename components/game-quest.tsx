@@ -6,11 +6,25 @@ import * as input from '../lib/keyboard'
 
 import Symbol from './game-symbol'
 
-export default class GameQuest extends Component<{ oninput: (key: string) => void, text: string, vars: string[] }, { className: string, select: string, text: string }> {
-  constructor(props: any) {
-    super(props)
-    this.state = { className: 'game-view', select: '', text: Lang.get(props.text) }
+interface IGameQuestProps {
+  oninput: (key: string) => void
+  text: string
+  vars: string[] 
+}
+
+interface IGameQuestState {
+  className: string
+  select: string
+  text: string
+}
+
+export default class GameQuest extends Component<IGameQuestProps> {
+  state: Readonly<IGameQuestState> = {
+    className: 'game-view',
+    select: '',
+    text: Lang.get(this.props.text)
   }
+
   public componentDidMount() {
     let { vars, oninput, text } = this.props
 
@@ -41,13 +55,10 @@ export default class GameQuest extends Component<{ oninput: (key: string) => voi
     })
   }
 
-  public drop() {
-
-  }
-
   public render() {
     let { className, select, text } = this.state
     let { vars } = this.props
+    
     return (
       <div className={className}>
         <div className='game-middle'>
