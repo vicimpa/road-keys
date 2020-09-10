@@ -50,7 +50,15 @@ module.exports = {
           'style-loader',/**/
           /*MiniCssExtractPlugin.loader,/**/
           "css-loader",
-          "sass-loader?outputStyle=compressed"
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              sassOptions: {
+                outputStyle: 'compressed',
+              },
+            },
+          }
         ]
       }
     ]
